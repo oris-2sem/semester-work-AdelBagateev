@@ -1,0 +1,40 @@
+version: '3.3'
+
+services:
+    database:
+        image: postgres
+        container_name: postgres_1
+        ports:
+            - "5433:5432"
+        environment:
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_DB=burger_store_db
+        volumes:
+            - pg_volume:/var/lib/postgresql/data
+        networks:
+            - burger_store_network
+
+
+    application:
+        image: burger_store_image
+        container_name: application_1
+        ports:
+            - "8080:8080"
+        environment:
+            - "SPRING_DATASOURCE_USERNAME=postgres"
+            - "SPRING_DATASOURCE_PASSWORD=admin"
+            - "SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/burger_store_db"
+
+        networks:
+            - burger_store_network
+        depends_on:
+            -   database
+
+
+volumes:
+    pg_volume:
+        external: true
+
+networks:
+    burger_store_network:
+        external: true

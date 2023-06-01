@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      author: "Adel Bagateev"
+      id: "1"
+      changes:
+        - sqlFile:
+            path: inserts.sql
+            relativeToChangelogFile: true

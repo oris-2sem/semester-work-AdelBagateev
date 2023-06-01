@@ -1,0 +1,2 @@
+GET http://localhost:8080/ingredient/1
+Authorization: Basic adel.bagateev@mail.ru:admin

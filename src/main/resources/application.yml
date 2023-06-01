@@ -1,0 +1,24 @@
+spring:
+    security:
+      oauth2:
+        client:
+            registration:
+              google:
+                  client-id: 1085657021839-umdah4bomuuqvirlit8acq19hiq4djsj.apps.googleusercontent.com
+                  client-secret: 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
+    datasource:
+        driver-class-name: org.postgresql.Driver
+
+        username: ${SPRING_DATASOURCE_USERNAME}
+        password: ${SPRING_DATASOURCE_PASSWORD}
+        url: ${SPRING_DATASOURCE_URL}
+
+        hikari:
+            maximum-pool-size: 20
+    jpa:
+        hibernate:
+            ddl-auto: validate
+
+    liquibase:
+        change-log: classpath:/liquibase/master.yml
+
